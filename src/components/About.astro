@@ -1,0 +1,120 @@
+---
+// src/components/About.astro
+import { siteConfig, withBase } from '@config/site';
+const { about } = siteConfig;
+---
+
+<section class="section-padding bg-warm-white" id="nosotros" aria-labelledby="about-heading">
+  <div class="container-main">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+      <!-- Panel visual izquierdo con fotografía editorial -->
+      <div class="relative animate-on-scroll order-2 lg:order-1">
+        <div class="relative">
+          <!-- Marco decorativo arquitectónico -->
+          <div
+            class="absolute -left-6 -top-6 w-full h-full border border-silver/30 pointer-events-none"
+            aria-hidden="true"
+          ></div>
+
+          <!-- Contenedor de la fotografía -->
+          <div class="relative overflow-hidden bg-navy shadow-card">
+            <img
+              src={withBase('/images/about-education.jpg')}
+              alt="Instalaciones contemporáneas de educación inicial y estancia infantil gestionada por Grupo Elysium"
+              width="640"
+              height="480"
+              class="w-full h-[440px] md:h-[480px] object-cover transition-transform duration-700 hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+            <!-- Gradiente de profundidad institucional -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-navy-deep/20 to-transparent pointer-events-none"
+              aria-hidden="true"
+            ></div>
+
+            <!-- Pie de foto flotante integrado -->
+            <div class="absolute bottom-6 left-6 right-6 text-warm-white">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-silver"></span>
+                <span class="text-[11px] font-sans tracking-widest uppercase text-silver/90 font-medium">
+                  Espacios de aprendizaje
+                </span>
+              </div>
+              <p class="font-serif text-warm-white/95 text-lg font-light italic">
+                Entornos diseñados para favorecer el cuidado y el desarrollo infantil.
+              </p>
+            </div>
+          </div>
+
+          <!-- Tarjeta flotante superpuesta (badge de marca) -->
+          <div
+            class="absolute -bottom-8 -right-4 md:-right-8 bg-white/95 backdrop-blur-md border border-silver/20 p-5 shadow-card-hover max-w-[280px] hidden sm:block"
+          >
+            <div class="flex items-center gap-3">
+              <img
+                src={withBase('/images/logo-grupo-elysium.jpg')}
+                alt="Grupo Elysium"
+                width="44"
+                height="44"
+                class="w-11 h-11 object-contain shrink-0"
+                loading="lazy"
+              />
+              <div>
+                <div class="font-serif text-navy text-sm font-semibold leading-tight">Grupo Elysium</div>
+                <div class="text-silver text-[11px] font-sans mt-0.5">Gestión institucional</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenido textual -->
+      <div class="order-1 lg:order-2">
+        <div class="animate-on-scroll">
+          <span class="eyebrow">Quiénes somos</span>
+          <h2
+            id="about-heading"
+            class="font-serif text-navy mt-3 mb-8 text-balance"
+            style="font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.15; font-weight: 600;"
+          >
+            {about.title}
+          </h2>
+        </div>
+
+        <div class="space-y-5">
+          {about.paragraphs.map((para, i) => (
+            <p
+              class="text-text-dark/80 leading-relaxed text-[1.05rem] animate-on-scroll"
+              style={`transition-delay: ${(i + 1) * 0.1}s;`}
+            >
+              {para}
+            </p>
+          ))}
+        </div>
+
+        <!-- Indicadores institucionales -->
+        <div class="grid grid-cols-2 gap-6 mt-12 pt-10 border-t border-silver/20">
+          <div class="animate-on-scroll" style="transition-delay: 0.4s;">
+            <div class="font-serif text-navy text-3xl font-light">2007</div>
+            <div class="text-silver text-xs tracking-widest uppercase mt-1 font-sans">Trayectoria desde</div>
+          </div>
+          <div class="animate-on-scroll" style="transition-delay: 0.5s;">
+            <div class="font-serif text-navy text-3xl font-light">MX</div>
+            <div class="text-silver text-xs tracking-widest uppercase mt-1 font-sans">Organización mexicana</div>
+          </div>
+        </div>
+
+        <div class="mt-10 animate-on-scroll" style="transition-delay: 0.6s;">
+          <a href={withBase('/nosotros')} class="btn-secondary">
+            Conoce más sobre nosotros
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

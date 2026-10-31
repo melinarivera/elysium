@@ -1,0 +1,80 @@
+---
+// src/components/Process.astro — Modelo de Gestión
+import { siteConfig, withBase } from '@config/site';
+const { process } = siteConfig;
+---
+
+<section class="section-padding bg-navy" id="modelo" aria-labelledby="process-heading">
+  <div class="container-main">
+    <!-- Encabezado -->
+    <div class="text-center max-w-2xl mx-auto mb-20 animate-on-scroll">
+      <span class="eyebrow text-silver/60">Modelo de gestión</span>
+      <h2
+        id="process-heading"
+        class="font-serif text-warm-white mt-3 mb-5 text-balance"
+        style="font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.15; font-weight: 600;"
+      >
+        Organización, acompañamiento y mejora continua
+      </h2>
+      <p class="text-warm-white/50 text-sm font-sans leading-relaxed">
+        Esquema orientativo de nuestro enfoque metodológico, sujeto a la aprobación de la empresa y adaptable a cada contexto.
+      </p>
+      <div class="w-12 h-px bg-silver/30 mx-auto mt-6"></div>
+    </div>
+
+    <!-- Línea de proceso — desktop: horizontal, mobile: vertical -->
+    <div class="relative">
+      <!-- Línea conectora desktop -->
+      <div
+        class="hidden lg:block absolute top-12 left-0 right-0 h-px bg-silver/20"
+        aria-hidden="true"
+        style="z-index: 0;"
+      ></div>
+
+      <div class="grid lg:grid-cols-5 gap-0 lg:gap-0 relative">
+        {process.map((item, i) => (
+          <div
+            class="relative flex lg:flex-col items-start lg:items-center gap-6 lg:gap-0 pb-8 lg:pb-0 animate-on-scroll"
+            style={`transition-delay: ${i * 0.12}s;`}
+          >
+            <!-- Conector vertical mobile -->
+            {i < process.length - 1 && (
+              <div
+                class="lg:hidden absolute left-6 top-14 bottom-0 w-px bg-silver/20"
+                aria-hidden="true"
+              ></div>
+            )}
+
+            <!-- Círculo numerado -->
+            <div
+              class="relative z-10 w-12 h-12 border border-silver/30 flex items-center justify-center shrink-0 lg:mx-auto bg-navy group-hover:border-silver/60 transition-colors duration-300"
+              aria-hidden="true"
+            >
+              <span class="font-serif text-silver text-sm font-light">{item.step}</span>
+            </div>
+
+            <!-- Contenido -->
+            <div class="lg:text-center lg:mt-8 lg:px-4">
+              <div class="font-sans text-silver/40 text-[10px] tracking-widest uppercase mb-2 lg:mb-3">
+                Paso {item.step}
+              </div>
+              <h3 class="font-serif text-warm-white text-base lg:text-lg font-medium leading-snug">
+                {item.title}
+              </h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA final -->
+    <div class="text-center mt-20 animate-on-scroll">
+      <a href={withBase('/contacto')} class="btn-outline-white">
+        Solicitar información
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

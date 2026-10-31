@@ -1,0 +1,117 @@
+---
+// src/components/Footer.astro
+import { siteConfig, withBase } from '@config/site';
+const { name, footer, nav, contact, foundingYear } = siteConfig;
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy-deep border-t border-silver/10" role="contentinfo">
+  <!-- Sección principal -->
+  <div class="container-main py-16 md:py-20">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+      <!-- Columna 1: Marca -->
+      <div class="lg:col-span-2">
+        <a href={withBase('/')} class="inline-flex items-center gap-3 mb-6 group" aria-label="Grupo Elysium">
+          <img
+            src={withBase('/images/logo-grupo-elysium.jpg')}
+            alt="Grupo Elysium"
+            width="44"
+            height="44"
+            class="w-11 h-11 object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+            loading="lazy"
+          />
+          <div>
+            <div class="font-serif text-warm-white/90 text-lg font-semibold leading-tight">{name}</div>
+            <div class="text-silver/40 text-[10px] tracking-widest uppercase font-sans">México</div>
+          </div>
+        </a>
+
+        <p class="text-warm-white/45 text-sm font-sans leading-relaxed max-w-xs mb-6">
+          {footer.description}
+        </p>
+
+        {footer.legalName ? (
+          <p class="text-silver/30 text-xs font-sans">{footer.legalName}</p>
+        ) : (
+          <p class="text-silver/20 text-xs font-sans italic">Razón social pendiente de confirmación.</p>
+        )}
+      </div>
+
+      <!-- Columna 2: Navegación -->
+      <div>
+        <h3 class="font-sans text-silver/40 text-[10px] tracking-widest uppercase mb-5 font-medium">
+          Navegación
+        </h3>
+        <ul class="space-y-3" role="list">
+          {nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-warm-white/50 hover:text-warm-white text-sm font-sans transition-colors duration-200"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna 3: Contacto -->
+      <div>
+        <h3 class="font-sans text-silver/40 text-[10px] tracking-widest uppercase mb-5 font-medium">
+          Contacto
+        </h3>
+        <ul class="space-y-3" role="list">
+          <li>
+            {contact.email ? (
+              <a href={`mailto:${contact.email}`} class="text-warm-white/50 hover:text-warm-white text-sm font-sans transition-colors duration-200">
+                {contact.email}
+              </a>
+            ) : (
+              <span class="text-silver/25 text-sm font-sans italic">Correo pendiente</span>
+            )}
+          </li>
+          <li>
+            {contact.phone ? (
+              <a href={`tel:${contact.phone}`} class="text-warm-white/50 hover:text-warm-white text-sm font-sans transition-colors duration-200">
+                {contact.phone}
+              </a>
+            ) : (
+              <span class="text-silver/25 text-sm font-sans italic">Teléfono pendiente</span>
+            )}
+          </li>
+          {contact.city && (
+            <li>
+              <span class="text-warm-white/50 text-sm font-sans">{contact.city}, México</span>
+            </li>
+          )}
+        </ul>
+        <div class="mt-6">
+          <a href={withBase('/contacto')} class="text-silver/50 hover:text-silver text-xs font-sans underline underline-offset-2 transition-colors duration-200">
+            Formulario de contacto →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra inferior -->
+  <div class="border-t border-silver/10">
+    <div class="container-main py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-silver/30 text-xs font-sans">
+        © {year} {name}. Todos los derechos reservados.
+      </p>
+      <div class="flex items-center gap-6">
+        <a
+          href={footer.privacyUrl}
+          class="text-silver/30 hover:text-silver/60 text-xs font-sans transition-colors duration-200"
+        >
+          Aviso de privacidad
+        </a>
+        <span class="text-silver/15 text-xs font-sans">
+          Desde {foundingYear}
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,58 @@
+---
+// src/pages/404.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import { withBase } from '@config/site';
+---
+
+<BaseLayout
+  title="Página no encontrada"
+  description="La página que buscas no existe. Vuelve al inicio de Grupo Elysium."
+  noIndex={true}
+>
+  <Header />
+  <main id="main-content">
+    <section class="min-h-[80vh] flex items-center bg-warm-white">
+      <div class="container-main text-center py-24">
+        <!-- Número 404 decorativo -->
+        <div
+          class="font-serif text-gray-light select-none leading-none mb-8"
+          style="font-size: clamp(8rem, 20vw, 16rem); font-weight: 600; line-height: 0.9;"
+          aria-hidden="true"
+        >
+          404
+        </div>
+
+        <!-- Logotipo -->
+        <div class="flex justify-center mb-8">
+          <img
+            src={withBase('/images/logo-grupo-elysium.jpg')}
+            alt="Grupo Elysium"
+            width="72"
+            height="72"
+            class="w-16 h-16 object-contain opacity-60"
+            loading="eager"
+          />
+        </div>
+
+        <h1 class="font-serif text-navy text-3xl md:text-4xl font-semibold mb-4">
+          Página no encontrada
+        </h1>
+        <p class="text-text-dark/60 text-lg font-sans mb-10 max-w-md mx-auto leading-relaxed">
+          La página que buscas no existe o ha sido movida. Desde aquí puedes volver al inicio.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href={withBase('/')} class="btn-primary">
+            Volver al inicio
+          </a>
+          <a href={withBase('/contacto')} class="btn-secondary">
+            Contactarnos
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

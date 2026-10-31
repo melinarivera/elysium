@@ -1,0 +1,102 @@
+---
+// src/components/Commitment.astro
+import { siteConfig, withBase } from '@config/site';
+const { commitment } = siteConfig;
+---
+
+<section class="section-padding bg-warm-white" id="compromiso" aria-labelledby="commitment-heading">
+  <div class="container-main">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+      <!-- Texto principal e imagen conceptual -->
+      <div>
+        <div class="animate-on-scroll">
+          <span class="eyebrow">Compromiso institucional</span>
+          <h2
+            id="commitment-heading"
+            class="font-serif text-navy mt-3 mb-8 text-balance"
+            style="font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.15; font-weight: 600;"
+          >
+            {commitment.title}
+          </h2>
+        </div>
+
+        {commitment.text.map((para, i) => (
+          <p
+            class="text-text-dark/80 leading-relaxed text-[1.05rem] mb-5 animate-on-scroll"
+            style={`transition-delay: ${i * 0.1}s;`}
+          >
+            {para}
+          </p>
+        ))}
+
+        <!-- Imagen editorial de acompañamiento pedagógico -->
+        <div class="mt-10 relative animate-on-scroll" style="transition-delay: 0.3s;">
+          <div class="relative overflow-hidden shadow-card border border-silver/20 group">
+            <img
+              src={withBase('/images/commitment-care.jpg')}
+              alt="Acompañamiento pedagógico y cuidado responsable en la educación inicial"
+              width="600"
+              height="380"
+              class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-navy-deep/85 via-navy-deep/30 to-transparent pointer-events-none"
+              aria-hidden="true"
+            ></div>
+
+            <div class="absolute bottom-5 left-5 right-5 text-warm-white">
+              <p class="font-serif text-warm-white/95 text-base md:text-lg italic font-light leading-snug">
+                "La primera infancia merece una gestión a su altura."
+              </p>
+              <div class="flex items-center gap-2 mt-2">
+                <span class="text-silver/80 text-[11px] font-sans tracking-wide">
+                  Grupo Elysium · Cuidado, acompañamiento y rigor pedagógico
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Principios -->
+      <div>
+        <div class="space-y-1">
+          {commitment.principles.map((principle, i) => (
+            <article
+              class="group border-b border-silver/20 last:border-b-0 animate-on-scroll"
+              style={`transition-delay: ${i * 0.12}s;`}
+            >
+              <div class="py-7 px-2">
+                <div class="flex items-start gap-5">
+                  <!-- Número -->
+                  <div
+                    class="shrink-0 w-8 h-8 flex items-center justify-center border border-silver/30 text-silver font-sans text-xs font-medium group-hover:border-navy group-hover:text-navy transition-all duration-300"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <div>
+                    <h3 class="font-serif text-navy text-lg font-semibold mb-2 group-hover:text-navy-deep transition-colors duration-300">
+                      {principle.name}
+                    </h3>
+                    <p class="text-text-dark/65 text-sm leading-relaxed">
+                      {principle.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Aviso de transparencia -->
+        <div class="mt-8 p-5 bg-gray-light border-l-2 border-silver animate-on-scroll" style="transition-delay: 0.5s;">
+          <p class="text-text-dark/60 text-xs font-sans leading-relaxed italic">
+            Grupo Elysium actúa con base en principios institucionales. Las afirmaciones de este sitio son orientativas y no constituyen acreditación, garantía ni autorización oficial.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

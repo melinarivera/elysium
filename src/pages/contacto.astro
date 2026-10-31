@@ -1,0 +1,38 @@
+---
+// src/pages/contacto.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/Header.astro';
+import Contact from '@components/Contact.astro';
+import Footer from '@components/Footer.astro';
+---
+
+<BaseLayout
+  title="Contacto"
+  description="Ponte en contacto con Grupo Elysium. Estamos disponibles para atender tus consultas sobre gestión de estancias infantiles y centros de educación inicial."
+>
+  <Header />
+  <main id="main-content">
+    <!-- Hero interior -->
+    <section class="bg-navy py-24 md:py-28" aria-labelledby="contact-page-heading">
+      <div class="container-main">
+        <div class="max-w-2xl">
+          <span class="eyebrow text-silver/60">Ponerse en contacto</span>
+          <h1
+            id="contact-page-heading"
+            class="font-serif text-warm-white mt-4 mb-5"
+            style="font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.1; font-weight: 600;"
+          >
+            Construyamos una conversación
+          </h1>
+          <p class="text-warm-white/55 text-lg font-sans leading-relaxed">
+            Si deseas conocer más sobre Grupo Elysium y nuestro enfoque institucional, escríbenos. Con gusto atenderemos tu consulta.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario y datos -->
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

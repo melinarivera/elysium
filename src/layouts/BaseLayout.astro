@@ -1,0 +1,99 @@
+---
+// src/layouts/BaseLayout.astro
+import { siteConfig, withBase } from '@config/site';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description = siteConfig.description,
+  ogImage = siteConfig.og.image,
+  noIndex = false,
+} = Astro.props;
+
+const pageTitle = title ? `${title} | ${siteConfig.name}` : `${siteConfig.name} — ${siteConfig.tagline}`;
+const canonical = new URL(Astro.url.pathname, siteConfig.url).toString();
+---
+
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09264A" />
+  <link rel="canonical" href={canonical} />
+
+  <!-- SEO -->
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  {noIndex && <meta name="robots" content="noindex, nofollow" />}
+  <meta name="author" content={siteConfig.name} />
+  <meta name="geo.region" content="MX" />
+  <meta name="language" content="es-MX" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(ogImage, siteConfig.url).toString()} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:site_name" content={siteConfig.name} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(ogImage, siteConfig.url).toString()} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href={withBase('/images/logo-grupo-elysium.jpg')} />
+  <link rel="apple-touch-icon" href={withBase('/images/logo-grupo-elysium.jpg')} />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": siteConfig.name,
+    "description": siteConfig.description,
+    "url": siteConfig.url,
+    "foundingDate": siteConfig.foundingYear.toString(),
+    "addressCountry": "MX",
+    "areaServed": "MX",
+    "knowsAbout": ["educación inicial", "estancias infantiles", "gestión educativa", "primera infancia"],
+  })} />
+</head>
+<body>
+  <!-- Skip link para accesibilidad -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <slot />
+
+  <!-- Intersection Observer para animaciones -->
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
+      );
+      document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+    } else {
+      document.querySelectorAll('.animate-on-scroll').forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>

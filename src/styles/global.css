@@ -1,0 +1,171 @@
+/* src/styles/global.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-navy: #09264A;
+    --color-navy-deep: #06182E;
+    --color-silver: #A7B0BC;
+    --color-gray-light: #E9EDF2;
+    --color-warm-white: #FAFAF8;
+    --color-text-dark: #243247;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-warm-white text-text-dark font-sans;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #243247;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-navy;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  /* Focus visible para accesibilidad */
+  :focus-visible {
+    outline: 2px solid #09264A;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Skip to main content */
+  .skip-link {
+    @apply absolute -top-12 left-4 z-50 bg-navy text-warm-white px-4 py-2 text-sm font-medium;
+    transition: top 0.2s;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Scrollbar personalizado */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #E9EDF2;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #A7B0BC;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* Contenedor principal */
+  .container-main {
+    @apply max-w-content mx-auto px-6 md:px-10 lg:px-16;
+  }
+
+  /* Botones */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-navy text-warm-white px-8 py-3.5 text-sm font-medium tracking-wide transition-all duration-300;
+    letter-spacing: 0.04em;
+  }
+  .btn-primary:hover {
+    @apply bg-navy-deep;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(9, 38, 74, 0.25);
+  }
+  .btn-primary:focus-visible {
+    outline: 2px solid #A7B0BC;
+    outline-offset: 3px;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border border-navy text-navy px-8 py-3.5 text-sm font-medium tracking-wide transition-all duration-300;
+    letter-spacing: 0.04em;
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    @apply bg-navy text-warm-white;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2 border border-warm-white/40 text-warm-white px-8 py-3.5 text-sm font-medium tracking-wide transition-all duration-300;
+    letter-spacing: 0.04em;
+  }
+  .btn-outline-white:hover {
+    @apply border-warm-white/80 bg-warm-white/10;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply text-xs font-sans font-medium tracking-widest text-silver uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  /* Línea decorativa */
+  .divider-silver {
+    @apply border-t border-silver/30;
+  }
+
+  /* Sección padding estándar */
+  .section-padding {
+    @apply py-24 md:py-32;
+  }
+
+  /* Tarjeta base */
+  .card-base {
+    @apply bg-white border border-gray-light p-8 transition-all duration-300;
+    box-shadow: var(--tw-shadow, 0 1px 3px rgba(9, 38, 74, 0.06));
+  }
+  .card-base:hover {
+    box-shadow: 0 4px 24px rgba(9, 38, 74, 0.10);
+    transform: translateY(-2px);
+  }
+
+  /* Animación fade-up para observadores de intersección */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Respeto a prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .card-base:hover {
+      transform: none;
+    }
+    .btn-primary:hover {
+      transform: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

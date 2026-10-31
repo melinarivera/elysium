@@ -1,0 +1,124 @@
+---
+// src/components/Header.astro
+import { siteConfig, withBase } from '@config/site';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-warm-white/95 backdrop-blur-sm border-b border-silver/20 transition-shadow duration-300" id="site-header">
+  <div class="container-main">
+    <nav class="flex items-center justify-between h-20" aria-label="Navegación principal">
+      <!-- Logo -->
+      <a href={withBase('/')} class="flex items-center gap-3 shrink-0 group" aria-label="Grupo Elysium — Inicio">
+        <img
+          src={withBase('/images/logo-grupo-elysium.jpg')}
+          alt="Grupo Elysium"
+          width="48"
+          height="48"
+          class="w-12 h-12 object-contain"
+          loading="eager"
+        />
+        <div class="hidden sm:block">
+          <div class="text-navy font-serif font-semibold text-lg leading-tight tracking-tight">Grupo Elysium</div>
+          <div class="text-silver text-[10px] tracking-widest uppercase font-sans">México</div>
+        </div>
+      </a>
+
+      <!-- Navegación desktop -->
+      <ul class="hidden lg:flex items-center gap-8" role="list">
+        {siteConfig.nav.slice(0, -1).map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="text-text-dark/80 hover:text-navy text-sm font-medium transition-colors duration-200 relative group py-1"
+            >
+              {item.label}
+              <span class="absolute bottom-0 left-0 w-0 h-px bg-navy transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA desktop -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href={withBase('/contacto')} class="btn-primary text-xs px-6 py-3">
+          Conversemos
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Botón menú móvil -->
+      <button
+        id="menu-toggle"
+        class="lg:hidden flex flex-col gap-1.5 p-2 rounded focus-visible:outline-navy"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Abrir menú de navegación"
+      >
+        <span class="block w-6 h-px bg-navy transition-all duration-300 menu-line-1"></span>
+        <span class="block w-6 h-px bg-navy transition-all duration-300 menu-line-2"></span>
+        <span class="block w-4 h-px bg-navy transition-all duration-300 menu-line-3"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Menú móvil -->
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden bg-warm-white border-t border-silver/20"
+    role="dialog"
+    aria-label="Menú de navegación móvil"
+  >
+    <div class="container-main py-6">
+      <ul class="flex flex-col gap-1" role="list">
+        {siteConfig.nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="block py-3 px-2 text-text-dark/80 hover:text-navy hover:bg-gray-light text-sm font-medium transition-colors duration-200 rounded"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-6 pt-6 border-t border-silver/20">
+        <a href={withBase('/contacto')} class="btn-primary w-full justify-center text-xs">
+          Conversemos
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer para compensar el header fijo -->
+<div class="h-20" aria-hidden="true"></div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const header = document.getElementById('site-header');
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+  });
+
+  // Cerrar al hacer clic en un enlace interno
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Sombra al hacer scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      header?.classList.add('shadow-sm');
+    } else {
+      header?.classList.remove('shadow-sm');
+    }
+  });
+</script>

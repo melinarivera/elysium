@@ -1,0 +1,154 @@
+---
+// src/pages/nosotros.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import { siteConfig, withBase } from '@config/site';
+const { about, pmv, values, foundingYear } = siteConfig;
+---
+
+<BaseLayout
+  title="Nosotros"
+  description="Conoce la historia, propósito y valores de Grupo Elysium, organización mexicana dedicada a la gestión de estancias infantiles y centros de educación inicial."
+>
+  <Header />
+  <main id="main-content">
+    <!-- Hero de página interior -->
+    <section class="bg-navy py-24 md:py-32" aria-labelledby="nosotros-heading">
+      <div class="container-main">
+        <div class="max-w-3xl">
+          <span class="eyebrow text-silver/60">Grupo Elysium</span>
+          <h1
+            id="nosotros-heading"
+            class="font-serif text-warm-white mt-4 mb-6"
+            style="font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; font-weight: 600;"
+          >
+            Una organización comprometida con la gestión de la primera infancia
+          </h1>
+          <div class="w-16 h-px bg-silver/30 mb-6"></div>
+          <p class="text-warm-white/60 text-lg font-sans leading-relaxed max-w-xl">
+            Desde {foundingYear}, Grupo Elysium trabaja con un enfoque institucional al servicio de estancias infantiles y centros de educación inicial en México.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historia y descripción con fotografía -->
+    <section class="section-padding bg-warm-white">
+      <div class="container-main">
+        <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div>
+            <span class="eyebrow animate-on-scroll">Quiénes somos</span>
+            <h2 class="font-serif text-navy mt-3 mb-8 animate-on-scroll" style="font-size: clamp(1.5rem, 2.5vw, 2.25rem); font-weight: 600; line-height: 1.2;">
+              {about.title}
+            </h2>
+            {about.paragraphs.map((para, i) => (
+              <p class="text-text-dark/80 leading-relaxed text-[1.05rem] mb-5 animate-on-scroll" style={`transition-delay: ${i * 0.1}s;`}>
+                {para}
+              </p>
+            ))}
+          </div>
+
+          <div class="animate-on-scroll relative" style="transition-delay: 0.2s;">
+            <div class="relative overflow-hidden shadow-card border border-silver/20">
+              <img
+                src={withBase('/images/about-education.jpg')}
+                alt="Instalaciones de centros de educación inicial gestionados por Grupo Elysium"
+                width="640"
+                height="480"
+                class="w-full h-[400px] object-cover"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/80 via-transparent to-transparent"></div>
+              <div class="absolute bottom-6 left-6 right-6 text-warm-white">
+                <p class="font-serif text-lg italic text-warm-white/95">
+                  "Cuidamos la gestión. Impulsamos los primeros años."
+                </p>
+                <p class="text-silver/70 text-xs font-sans mt-1">
+                  Grupo Elysium · Trayectoria institucional desde {foundingYear}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PMV -->
+    <section class="section-padding bg-gray-light">
+      <div class="container-main">
+        <div class="text-center max-w-2xl mx-auto mb-14 animate-on-scroll">
+          <span class="eyebrow">Nuestro enfoque</span>
+          <h2 class="font-serif text-navy mt-3" style="font-size: clamp(1.5rem, 2.5vw, 2.25rem); font-weight: 600; line-height: 1.2;">
+            Propósito, Misión y Visión
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-px bg-silver/20">
+          {pmv.map((item, i) => (
+            <div class="bg-white p-10 animate-on-scroll" style={`transition-delay: ${i * 0.15}s;`}>
+              <div class="eyebrow mb-3">{item.label}</div>
+              <p class="text-text-dark/80 leading-relaxed text-sm">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="section-padding bg-warm-white">
+      <div class="container-main">
+        <div class="text-center max-w-2xl mx-auto mb-14 animate-on-scroll">
+          <span class="eyebrow">Valores</span>
+          <h2 class="font-serif text-navy mt-3" style="font-size: clamp(1.5rem, 2.5vw, 2.25rem); font-weight: 600; line-height: 1.2;">
+            Principios que orientan nuestro trabajo
+          </h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          {values.slice(0, 4).map((v, i) => (
+            <div class="card-base animate-on-scroll" style={`transition-delay: ${i * 0.1}s;`}>
+              <h3 class="font-serif text-navy text-lg font-semibold mb-2">{v.name}</h3>
+              <p class="text-text-dark/65 text-sm leading-relaxed">{v.description}</p>
+            </div>
+          ))}
+        </div>
+        <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          {values.slice(4).map((v, i) => (
+            <div class="card-base animate-on-scroll" style={`transition-delay: ${(i + 4) * 0.1}s;`}>
+              <h3 class="font-serif text-navy text-lg font-semibold mb-2">{v.name}</h3>
+              <p class="text-text-dark/65 text-sm leading-relaxed">{v.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-navy text-center">
+      <div class="container-main max-w-2xl mx-auto animate-on-scroll">
+        <h2 class="font-serif text-warm-white text-3xl md:text-4xl font-semibold mb-6">
+          ¿Deseas conocer más sobre nuestro enfoque?
+        </h2>
+        <p class="text-warm-white/60 text-lg font-sans mb-10 leading-relaxed">
+          Ponte en contacto con Grupo Elysium y conversemos sobre cómo podemos acompañar la gestión de tu centro.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href={withBase('/contacto')} class="btn-primary bg-warm-white text-navy hover:bg-gray-light">
+            Contáctanos
+          </a>
+          <a href={withBase('/')} class="btn-outline-white">
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+    { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
+  );
+  document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+</script>

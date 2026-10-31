@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /aviso-de-privacidad
+
+Sitemap: https://grupoelysium.mx/sitemap.xml

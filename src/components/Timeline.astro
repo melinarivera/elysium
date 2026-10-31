@@ -1,0 +1,118 @@
+---
+// src/components/Timeline.astro — Trayectoria
+import { siteConfig } from '@config/site';
+const { foundingYear } = siteConfig;
+---
+
+<section class="section-padding bg-navy-deep" id="trayectoria" aria-labelledby="timeline-heading">
+  <div class="container-main">
+    <!-- Encabezado -->
+    <div class="text-center max-w-2xl mx-auto mb-20 animate-on-scroll">
+      <span class="eyebrow text-silver/60">Nuestra historia</span>
+      <h2
+        id="timeline-heading"
+        class="font-serif text-warm-white mt-3 text-balance"
+        style="font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.15; font-weight: 600;"
+      >
+        Una historia que continúa construyéndose
+      </h2>
+      <div class="w-12 h-px bg-silver/30 mx-auto mt-6"></div>
+    </div>
+
+    <!-- Línea temporal -->
+    <div class="relative max-w-3xl mx-auto">
+      <!-- Línea vertical -->
+      <div
+        class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-silver/15"
+        aria-hidden="true"
+        style="transform: translateX(-0.5px);"
+      ></div>
+
+      <!-- Hito fundacional -->
+      <div class="relative flex md:justify-center mb-0 animate-on-scroll">
+        <div class="flex md:w-full md:max-w-2xl">
+          <!-- Lado izquierdo (desktop) -->
+          <div class="hidden md:flex md:w-1/2 md:pr-12 md:justify-end md:items-center">
+            <div class="text-right">
+              <div class="font-serif text-silver text-5xl font-light">{foundingYear}</div>
+              <div class="text-silver/40 text-xs tracking-widest uppercase mt-1 font-sans">Año de inicio</div>
+            </div>
+          </div>
+
+          <!-- Punto central -->
+          <div class="relative z-10 shrink-0">
+            <div class="w-12 h-12 border-2 border-silver/40 flex items-center justify-center bg-navy-deep">
+              <div class="w-3 h-3 bg-silver/60 rounded-full"></div>
+            </div>
+          </div>
+
+          <!-- Contenido derecho -->
+          <div class="ml-6 md:ml-12 md:w-1/2 pb-16">
+            <!-- Año en mobile -->
+            <div class="md:hidden mb-2">
+              <div class="font-serif text-silver text-3xl font-light">{foundingYear}</div>
+            </div>
+            <!-- Tarjeta de contenido -->
+            <div class="bg-white/5 border border-silver/15 p-8">
+              <h3 class="font-serif text-warm-white text-xl font-semibold mb-3">
+                Inicio de nuestra trayectoria institucional
+              </h3>
+              <p class="text-warm-white/50 text-sm font-sans leading-relaxed">
+                Grupo Elysium inicia su actividad con un compromiso firme hacia la gestión responsable de estancias infantiles y centros de educación inicial en México.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hito: En desarrollo -->
+      <div class="relative flex md:justify-center animate-on-scroll" style="transition-delay: 0.15s;">
+        <div class="flex md:w-full md:max-w-2xl">
+          <!-- Lado derecho (desktop) — aquí va el contenido -->
+          <div class="hidden md:flex md:w-1/2 md:pr-12 md:justify-end md:items-start">
+            <div class="bg-white/5 border border-silver/15 border-dashed p-8 w-full text-right">
+              <div class="inline-flex items-center gap-2 mb-4 ml-auto">
+                <span class="text-silver/40 text-[10px] tracking-widest uppercase font-sans">En construcción</span>
+                <div class="w-1.5 h-1.5 bg-silver/30 rounded-full animate-pulse"></div>
+              </div>
+              <h3 class="font-serif text-warm-white/40 text-xl font-semibold mb-3">
+                Próximos hitos
+              </h3>
+              <p class="text-warm-white/30 text-sm font-sans leading-relaxed">
+                La línea de trayectoria se ampliará conforme se validen y confirmen nuevos hitos institucionales.
+              </p>
+            </div>
+          </div>
+
+          <!-- Punto central -->
+          <div class="relative z-10 shrink-0">
+            <div class="w-12 h-12 border border-dashed border-silver/20 flex items-center justify-center bg-navy-deep">
+              <div class="w-2 h-2 bg-silver/20 rounded-full"></div>
+            </div>
+          </div>
+
+          <!-- Mobile: contenido -->
+          <div class="ml-6 md:hidden pb-8">
+            <div class="bg-white/5 border border-silver/15 border-dashed p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-silver/40 text-[10px] tracking-widest uppercase font-sans">En construcción</span>
+                <div class="w-1.5 h-1.5 bg-silver/30 rounded-full animate-pulse"></div>
+              </div>
+              <p class="text-warm-white/30 text-sm font-sans leading-relaxed">
+                Próximos hitos institucionales — pendientes de validación.
+              </p>
+            </div>
+          </div>
+
+          <!-- Desktop: espaciador derecho vacío -->
+          <div class="hidden md:block md:w-1/2 md:ml-12"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nota de transparencia -->
+    <p class="text-center text-silver/30 text-xs font-sans mt-12 max-w-lg mx-auto animate-on-scroll">
+      Los hitos mostrados corresponden a información validada. No se publican fechas, aperturas, logros ni datos no confirmados por la organización.
+    </p>
+  </div>
+</section>

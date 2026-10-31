@@ -1,0 +1,121 @@
+---
+// src/pages/aviso-de-privacidad.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import { withBase } from '@config/site';
+const currentYear = new Date().getFullYear();
+---
+
+<BaseLayout
+  title="Aviso de Privacidad"
+  description="Aviso de Privacidad de Grupo Elysium conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)."
+  noIndex={true}
+>
+  <Header />
+  <main id="main-content">
+    <section class="bg-navy py-20 md:py-24" aria-labelledby="privacy-heading">
+      <div class="container-main">
+        <span class="eyebrow text-silver/60">Aviso legal</span>
+        <h1
+          id="privacy-heading"
+          class="font-serif text-warm-white mt-4"
+          style="font-size: clamp(1.75rem, 3vw, 3rem); font-weight: 600; line-height: 1.15;"
+        >
+          Aviso de Privacidad
+        </h1>
+      </div>
+    </section>
+
+    <section class="section-padding bg-warm-white">
+      <div class="container-main">
+        <div class="max-w-3xl mx-auto">
+          <!-- Aviso de desarrollo -->
+          <div class="bg-amber-50 border border-amber-200 p-6 mb-12 rounded-sm">
+            <p class="text-amber-800 text-sm font-sans leading-relaxed">
+              <strong>Nota de desarrollo:</strong> Este aviso de privacidad es un borrador preliminar orientativo y deberá ser revisado, personalizado y validado por un asesor jurídico antes de su publicación. No constituye un aviso legal definitivo.
+            </p>
+          </div>
+
+          <div class="prose prose-sm md:prose-base max-w-none font-sans text-text-dark/80 space-y-8">
+
+            <div>
+              <h2 class="font-serif text-navy text-2xl font-semibold mb-4">Identidad y domicilio del Responsable</h2>
+              <p>
+                <strong>Grupo Elysium</strong> (en adelante, "el Responsable"), con domicilio en México —cuyo detalle se proporcionará una vez confirmado—, es responsable del tratamiento de sus datos personales, de conformidad con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y su Reglamento.
+              </p>
+              <p class="text-silver italic text-sm">Razón social y datos de contacto oficiales: pendientes de confirmación.</p>
+            </div>
+
+            <hr class="border-silver/20" />
+
+            <div>
+              <h2 class="font-serif text-navy text-2xl font-semibold mb-4">Datos personales recabados</h2>
+              <p>El Responsable podrá recabar los siguientes datos personales:</p>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Nombre completo</li>
+                <li>Correo electrónico</li>
+                <li>Número de teléfono (opcional)</li>
+                <li>Nombre de la organización o institución (opcional)</li>
+                <li>Ciudad de residencia</li>
+                <li>Contenido de mensajes enviados a través del formulario de contacto</li>
+              </ul>
+              <p>
+                <strong>Importante:</strong> No recabamos datos personales de menores de edad a través de este sitio web.
+              </p>
+            </div>
+
+            <hr class="border-silver/20" />
+
+            <div>
+              <h2 class="font-serif text-navy text-2xl font-semibold mb-4">Finalidades del tratamiento</h2>
+              <p>Sus datos personales serán utilizados para las siguientes finalidades <strong>primarias</strong>:</p>
+              <ul class="list-disc pl-6 space-y-1">
+                <li>Atender y dar seguimiento a solicitudes de contacto e información institucional.</li>
+                <li>Comunicar información sobre nuestros servicios de gestión educativa.</li>
+                <li>Mantener la relación de comunicación con interesados y colaboradores.</li>
+              </ul>
+              <p>Si no desea que sus datos sean tratados para alguna finalidad secundaria, puede manifestarlo a través de los canales de contacto indicados en este aviso.</p>
+            </div>
+
+            <hr class="border-silver/20" />
+
+            <div>
+              <h2 class="font-serif text-navy text-2xl font-semibold mb-4">Transferencias de datos</h2>
+              <p>
+                El Responsable no realizará transferencias de datos personales a terceros sin consentimiento previo, salvo las excepciones previstas en el artículo 37 de la LFPDPPP.
+              </p>
+            </div>
+
+            <hr class="border-silver/20" />
+
+            <div>
+              <h2 class="font-serif text-navy text-2xl font-semibold mb-4">Derechos ARCO</h2>
+              <p>
+                Usted tiene derecho de Acceder, Rectificar, Cancelar u Oponerse (derechos ARCO) al tratamiento de sus datos personales. Para ejercer estos derechos, puede enviar su solicitud a través de los medios de contacto que el Responsable habilitará una vez confirmados.
+              </p>
+            </div>
+
+            <hr class="border-silver/20" />
+
+            <div>
+              <h2 class="font-serif text-navy text-2xl font-semibold mb-4">Cambios al Aviso de Privacidad</h2>
+              <p>
+                El presente Aviso de Privacidad podrá ser modificado. Cualquier cambio será notificado a través de este sitio web.
+              </p>
+              <p class="text-silver/70 text-sm">Última actualización orientativa: {currentYear}. Pendiente de revisión jurídica.</p>
+            </div>
+
+          </div>
+
+          <div class="mt-12 pt-8 border-t border-silver/20">
+            <a href={withBase('/')} class="btn-secondary">
+              ← Volver al inicio
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

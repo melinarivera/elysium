@@ -1,0 +1,96 @@
+---
+// src/components/Services.astro — Áreas de Gestión
+import { siteConfig } from '@config/site';
+const { services } = siteConfig;
+
+const serviceIcons: Record<string, string> = {
+  admin: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <rect x="3" y="3" width="8" height="8" stroke="currentColor" stroke-width="1.4" rx="0.5"/>
+    <rect x="13" y="3" width="8" height="8" stroke="currentColor" stroke-width="1.4" rx="0.5"/>
+    <rect x="3" y="13" width="8" height="8" stroke="currentColor" stroke-width="1.4" rx="0.5"/>
+    <path d="M13 17h8M17 13v8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  </svg>`,
+  ops: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  </svg>`,
+  people: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="9" cy="7" r="3" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M3 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    <circle cx="17" cy="9" r="2" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M20 20c0-2.21-1.343-4-3-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  </svg>`,
+  pedagogy: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M4 19.5C4 18.12 5.12 17 6.5 17H20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5V4.5A2.5 2.5 0 016.5 2z" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M8 8h8M8 12h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  </svg>`,
+  quality: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 2l2.5 7.5H22l-6.5 4.7 2.5 7.5L12 17l-6 4.7 2.5-7.5L3 9.5h7.5L12 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  </svg>`,
+  docs: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M14 2v6h6M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  </svg>`,
+};
+---
+
+<section class="section-padding bg-warm-white" id="areas" aria-labelledby="services-heading">
+  <div class="container-main">
+    <!-- Encabezado -->
+    <div class="max-w-2xl mb-16 animate-on-scroll">
+      <span class="eyebrow">Áreas de gestión</span>
+      <h2
+        id="services-heading"
+        class="font-serif text-navy mt-3 mb-6 text-balance"
+        style="font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.15; font-weight: 600;"
+      >
+        Una gestión integral comienza con procesos sólidos
+      </h2>
+      <p class="text-text-dark/70 leading-relaxed">
+        Las siguientes áreas representan los ámbitos de gestión que Grupo Elysium desarrolla en beneficio de los centros que acompaña. Su disponibilidad efectiva se confirma caso a caso.
+      </p>
+    </div>
+
+    <!-- Grid de tarjetas -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-silver/20">
+      {services.map((service, i) => (
+        <article
+          class="bg-warm-white p-8 md:p-10 group hover:bg-white transition-all duration-300 animate-on-scroll"
+          style={`transition-delay: ${(i % 3) * 0.1}s;`}
+        >
+          <!-- Número -->
+          <div class="text-silver/50 font-sans text-xs tracking-widest mb-5 font-medium">
+            {String(i + 1).padStart(2, '0')}
+          </div>
+
+          <!-- Icono -->
+          <div class="text-navy mb-5 group-hover:text-navy-deep transition-colors duration-300">
+            <Fragment set:html={serviceIcons[service.icon] ?? serviceIcons.admin} />
+          </div>
+
+          <!-- Título -->
+          <h3 class="font-serif text-navy text-xl font-semibold mb-3 leading-snug group-hover:text-navy-deep transition-colors duration-300">
+            {service.title}
+          </h3>
+
+          <!-- Descripción -->
+          <p class="text-text-dark/65 text-sm leading-relaxed">
+            {service.description}
+          </p>
+
+          <!-- Indicador hover -->
+          <div class="mt-6 flex items-center gap-2 text-navy/0 group-hover:text-navy transition-all duration-300">
+            <div class="w-5 h-px bg-current"></div>
+            <span class="text-xs tracking-wide font-sans">Conocer más</span>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Nota de transparencia -->
+    <p class="text-silver text-xs mt-8 font-sans italic animate-on-scroll">
+      * La disponibilidad efectiva de cada área deberá confirmarse con Grupo Elysium antes de publicar.
+    </p>
+  </div>
+</section>

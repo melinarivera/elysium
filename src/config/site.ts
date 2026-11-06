@@ -10,7 +10,7 @@ export const siteConfig = {
   tagline: 'Cuidamos la gestión. Impulsamos los primeros años.',
   description:
     'Grupo Elysium es una organización mexicana dedicada a la gestión de estancias infantiles y centros de educación inicial, con un enfoque profesional e institucional.',
-  url: 'https://melinarivera.github.io/elysium',
+  url: 'https://centroelysium.org',
   locale: 'es-MX',
   foundingYear: 2007,
 

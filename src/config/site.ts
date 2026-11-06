@@ -22,9 +22,9 @@ export const siteConfig = {
 
   // Contacto — completar con datos reales antes de publicar
   contact: {
-    email: '', // PENDIENTE
-    phone: '', // PENDIENTE
-    whatsapp: '', // PENDIENTE — agregar número para activar botón de WhatsApp
+    email: 'info@centroelysium.org',
+    phone: '+52 55 6479 3805',
+    whatsapp: '525564793805', // número para el botón de WhatsApp
     address: '', // PENDIENTE
     city: 'México',
   },

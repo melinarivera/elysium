@@ -4,13 +4,13 @@ Este documento lista la información que debe confirmarse, proporcionarse o vali
 
 ---
 
-## 🔴 Datos institucionales obligatorios
+## 🔴 Datos institucionales
 
 - [ ] **Razón social completa** de la empresa (para footer y aviso de privacidad)
-- [ ] **Correo electrónico corporativo** de contacto
-- [ ] **Número de teléfono** corporativo
+- [x] **Correo electrónico corporativo**: `info@centroelysium.org`
+- [x] **Número de teléfono**: `+52 55 6479 3805`
 - [ ] **Dirección o domicilio fiscal / de atención** (si se desea mostrar)
-- [ ] **Número de WhatsApp corporativo** (para activar el botón de WhatsApp en la sección de contacto)
+- [x] **Número de WhatsApp corporativo**: `+52 55 6479 3805` (activo con botón directo)
 
 ---
 

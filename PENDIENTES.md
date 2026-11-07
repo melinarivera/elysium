@@ -31,12 +31,11 @@ Este documento lista la información que debe confirmarse, proporcionarse o vali
 
 ---
 
-## 🟡 Integraciones técnicas pendientes
+## 🟡 Integraciones técnicas
 
-- [ ] **Formulario de contacto**: Integrar con servicio de envío real (Resend, Formspree, Mailgun, o endpoint propio). Actualmente muestra aviso de desarrollo.
-- [ ] **Open Graph image**: Crear imagen de 1200×630 px para compartir en redes sociales (`/images/og-grupo-elysium.jpg`)
+- [x] **Formulario de contacto**: Conectado directamente a `info@centroelysium.org` mediante servicio seguro AJAX.
+- [x] **Open Graph image**: Configurada en `/images/og-grupo-elysium.jpg`
 - [ ] **Favicon SVG**: Crear favicon derivado del símbolo del logotipo (archivo `.ico` y `.svg`)
-- [ ] **Sitemap XML**: Configurar integración `@astrojs/sitemap` en `astro.config.mjs`
 - [ ] **Analytics**: Definir si se usará Google Analytics, Plausible u otra solución. Requiere banner de cookies si se usa GA.
 
 ---

@@ -11,18 +11,20 @@ const year = new Date().getFullYear();
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
       <!-- Columna 1: Marca -->
       <div class="lg:col-span-2">
-        <a href={withBase('/')} class="inline-flex items-center gap-3 mb-6 group" aria-label="Grupo Elysium">
-          <img
-            src={withBase('/images/logo-grupo-elysium.jpg')}
-            alt="Grupo Elysium"
-            width="44"
-            height="44"
-            class="w-11 h-11 object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-            loading="lazy"
-          />
+        <a href={withBase('/')} class="inline-flex items-center gap-3.5 mb-6 group" aria-label="Grupo Elysium">
+          <div class="w-12 h-12 bg-white rounded p-1 flex items-center justify-center shrink-0 border border-silver/30 shadow-sm group-hover:border-silver/60 transition-colors duration-300">
+            <img
+              src={withBase('/images/logo-grupo-elysium.jpg')}
+              alt="Grupo Elysium"
+              width="44"
+              height="44"
+              class="w-full h-full object-contain"
+              loading="lazy"
+            />
+          </div>
           <div>
-            <div class="font-serif text-warm-white/90 text-lg font-semibold leading-tight">{name}</div>
-            <div class="text-silver/40 text-[10px] tracking-widest uppercase font-sans">México</div>
+            <div class="font-serif text-warm-white/95 text-lg font-semibold leading-tight group-hover:text-warm-white transition-colors">{name}</div>
+            <div class="text-silver/50 text-[10px] tracking-widest uppercase font-sans">México</div>
           </div>
         </a>
 
